@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Generate some random number combination of two digit and tree digit and
+      store the sumation and print on click on the button
+    </title>
+    <style>
+      * {
+        margin: 0%;
+        padding: 0%;
+      }
+      .container {
+        background-color: bisque;
+        margin: auto;
+        width: 70vw;
+        height: 70vh;
+      }
+      #head {
+        text-align: center;
+        size: 20px;
+        text-transform: uppercase;
+        margin: 50px auto 50px auto;
+      }
+      span {
+        color: rgb(39, 48, 45);
+        margin: 10px;
+        /* size: 50px; */
+        font-size: larger;
+      }
+      .num,
+      .but {
+        display: flex;
+        justify-content: center;
+      }
+      p {
+        padding: 2px;
+        margin: 50px auto 20px auto;
+        text-align: center;
+      }
+      #button,
+      #next {
+        margin: auto 10px auto 10px;
+        width: 100px;
+        height: 25px;
+        background-color: cadetblue;
+        border-radius: 10%;
+        cursor: pointer;
+      }
+      #button:hover,
+      #next:hover {
+        background-color: azure;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <div class="container">
+      <h2 id="head">addition Practice game</h2>
+      <div class="num">
+        <p>
+          use your mind <br />
+          press next to start the game
+        </p>
+      </div>
+      <p>.........</p>
+      <br />
+      <div class="but">
+        <button id="button" type="submit">Result</button>
+        <button id="next" type="submit">next</button>
+      </div>
+    </div>
+    <script>
+      // var size = Math.floor(Math.random() * (10 - 2) + 2);
+      // console.log(size);
+      //random number are generated from 2 to 10
+
+      //append the number of span tags according to the size of the array
+      // var size;
+      // var ar = [];
+      function create_size() {
+        var size = Math.floor(Math.random() * (10 - 2) + 2);
+        return size;
+        // console.log(size);
+      }
+
+      //logic for append the span according to the size of the generated size of array
+
+      function ape(size) {
+        for (let a = 0; a < size; a++) {
+          var s = document.querySelector(".num").appendChild(createee(ar[a]));
+        }
+      }
+
+      function createee(data) {
+        let spla = document.createElement("span");
+        spla.textContent = data;
+        return spla;
+      }
+
+      //creating the elements in the array
+
+      function createlevel1(size) {
+        for (var i = 0; i < size; i++) {
+          ar[i] = Math.round(Math.random() * 100);
+        }
+        // console.log(ar);
+      }
+
+      // createlevel1(size);
+
+      function createlevel2(size) {
+        for (var i = 0; i < size; i++) {
+          ar[i] = Math.round(Math.random() * 1000);
+        }
+        // console.log(ar);
+      }
+      // createlevel2(size);
+
+      //taking input from user to select the level of addition
+      level = prompt("enter the level you want to do calculation ?");
+      // function startthegame(level) {
+      //   if (level == 1) {
+      //     createlevel1(size);
+      //     ape(size);
+      //     console.log(result(size));
+      //   } else if (level == 2) {
+      //     createlevel2(size);
+      //     ape(size);
+      //     console.log(result(size));
+      //   }
+      // }
+
+      // calculating the result the created element
+      function result(size) {
+        console.log(size);
+        sum = 0;
+        for (let i = 0; i < size; i++) {
+          sum += ar[i];
+          // console.log(sum);
+        }
+        // console.log(sum);
+        // document.querySelector("p").textContent = sum;
+      }
+      //   let but=document.querySelector("button")
+
+      //for the printing the result of the addition
+      $("#button").on(
+        "click",
+
+        function () {
+          document.querySelector("p").textContent = sum;
+        }
+      );
+
+      //program for next statment
+
+      $("#next").on("click", function () {
+        //generate a new size
+        newsize = create_size();
+        ar = [];
+
+        node = document.querySelector(".num");
+        while (node.hasChildNodes()) {
+          node.removeChild(node.lastChild);
+        }
+        // .appendChild(createee(ar[a]));
+        document.querySelector("p").textContent = ".....";
+        if (level == 1) {
+          createlevel1(newsize);
+          // ape(newsize);
+          // result(newsize);
+        } else if (level == 2) {
+          createlevel2(newsize);
+          // ape(newsize);
+          // result(newsize);
+        }
+        ape(newsize);
+        result(newsize);
+        //then generate new array with new values
+
+        // actually reapeat all the process when this button is clicked
+      });
+
+      // startthegame(level);
+    </script>
+  </body>
+</html>
